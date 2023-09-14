@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="view-travel-destinations.js"></script>
+  </head>
+  <body>
+    <header>
+      <img class="header-svg" src="assets/globe.svg" alt="World Globe" />
+      <span class="header-text">My travel journal.</span>
+    </header>
+    <main>
+      <div class="title">Destinations</div>
+      <div class="destinations-container">
+        <div class="destination-container">
+          <img class="td-image" src="assets/no-image-available.png" />
+          <div class="details-container">
+            <div class="td-header">
+              <img src="assets/path.svg" />
+              <span class="country">JAPAN</span>
+              <a href="https://www.google.com/maps/place/Mount+Fuji" target="_blank" class="td-header-link">
+                View on Google Maps</a
+              >
+            </div>
+            <div class="td-title">Mount Fuji</div>
+            <div class="td-date">12 Jan, 2021 - 24 Jan, 2021</div>
+            <div class="td-description">
+              Mount Fuji is the tallest mountain in Japan, standing at 3776 meters (12380 feet). Mount Fuji is the
+              single most popular tourist site in Japan, for both Japanese and foreign tourists.
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-shadow" onclick="openFormPage()">
+        <img class="plus-circle" src="assets/plus-circle.svg" />Add entry
+      </button>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel destinations</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="create-travel-destination.js"></script>
+  </head>
+  <body>
+    <header>
+      <img class="header-svg" src="assets/globe.svg" alt="Globe" />
+      <span class="header-text">My travel journal.</span>
+    </header>
+    <main>
+      <form>
+        <div class="title">New destination</div>
+        <div class="form-fields">
+          <label for="country">Country<span class="required"> *</span></label>
+          <input class="input" id="country" type="text" placeholder="Country of destination" />
+
+          <label for="title">Title<span class="required"> *</span></label>
+          <input class="input" id="title" type="text" placeholder="placeholder" />
+
+          <label for="link">Link</label>
+          <input class="input" id="link" type="text" placeholder="placeholder" />
+
+          <label for="arrival-date">Arrival date</label>
+          <input class="input" id="arrival-date" type="date" />
+
+          <label for="departure-date">Departure date</label>
+          <input class="input" id="departure-date" type="date" />
+
+          <label for="image">Image</label>
+          <input class="input" id="image" type="file" />
+
+          <label for="description">Description</label>
+          <input class="input" id="description" placeholder="placeholder"></input>
+        </div>
+
+        <div class="form-buttons">
+          <button type="reset" onclick="closeFormPage()" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn-primary">Save</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
