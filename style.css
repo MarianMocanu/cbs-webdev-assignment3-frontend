@@ -111,16 +111,16 @@ label {
   flex-direction: column;
 }
 .destination-container {
-  width: 470px;
-  height: 168px;
+  width: 600px;
+  height: 180px;
   display: flex;
   padding: 30px 0;
   border-bottom: 1px solid #ff8a50;
   align-items: center;
 }
 .td-image {
-  width: 125px;
-  height: 168px;
+  width: 140px;
+  height: 180px;
   border-radius: 5px;
 }
 .details-container {
@@ -134,10 +134,14 @@ label {
   color: #333333;
   font-weight: 400;
 }
-.country {
-  letter-spacing: 2px;
+.path {
+  padding-right: 6px;
 }
-.td-header-link {
+.country {
+  letter-spacing: 1px;
+  padding-right: 6px;
+}
+.td-link {
   font-size: 12px;
   line-height: 14px;
   color: #918e9b;

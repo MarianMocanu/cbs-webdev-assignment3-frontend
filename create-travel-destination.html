@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel destinations</title>
+    <title>Create travel destination</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="create-travel-destination.js"></script>
+    <link rel="icon" href="assets/globe.svg" type="image/x-icon">
   </head>
   <body>
     <header>
@@ -13,17 +13,17 @@
       <span class="header-text">My travel journal.</span>
     </header>
     <main>
-      <form>
+      <form id="travel-destination-form">
         <div class="title">New destination</div>
         <div class="form-fields">
           <label for="country">Country<span class="required"> *</span></label>
-          <input class="input" id="country" type="text" placeholder="Country of destination" />
+          <input class="input" id="country" type="text" placeholder="Country of your destination - required field" />
 
           <label for="title">Title<span class="required"> *</span></label>
-          <input class="input" id="title" type="text" placeholder="placeholder" />
+          <input class="input" id="title" type="text" placeholder="Title of your attraction - required field" />
 
           <label for="link">Link</label>
-          <input class="input" id="link" type="text" placeholder="placeholder" />
+          <input class="input" id="link" type="text" placeholder="Google Maps link for your atraction" />
 
           <label for="arrival-date">Arrival date</label>
           <input class="input" id="arrival-date" type="date" />
@@ -35,7 +35,7 @@
           <input class="input" id="image" type="file" />
 
           <label for="description">Description</label>
-          <input class="input" id="description" placeholder="placeholder"></input>
+          <input class="input" id="description" placeholder="Short description of your destination"></input>
         </div>
 
         <div class="form-buttons">
@@ -44,5 +44,6 @@
         </div>
       </form>
     </main>
+    <script src="create-travel-destination.js"></script>
   </body>
 </html>

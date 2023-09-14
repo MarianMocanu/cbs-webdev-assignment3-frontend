@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Travel destinations</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="view-travel-destinations.js"></script>
+    <link rel="icon" href="assets/globe.svg" type="image/x-icon" />
   </head>
   <body>
     <header>
@@ -14,14 +14,14 @@
     </header>
     <main>
       <div class="title">Destinations</div>
-      <div class="destinations-container">
-        <div class="destination-container">
+      <div class="destinations-container" id="destinations-container">
+        <!-- <div class="destination-container">
           <img class="td-image" src="assets/no-image-available.png" />
           <div class="details-container">
             <div class="td-header">
-              <img src="assets/path.svg" />
+              <img src="assets/path.svg" class="path" />
               <span class="country">JAPAN</span>
-              <a href="https://www.google.com/maps/place/Mount+Fuji" target="_blank" class="td-header-link">
+              <a href="https://www.google.com/maps/place/Mount+Fuji" target="_blank" class="td-link">
                 View on Google Maps</a
               >
             </div>
@@ -32,11 +32,12 @@
               single most popular tourist site in Japan, for both Japanese and foreign tourists.
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <button class="btn-shadow" onclick="openFormPage()">
         <img class="plus-circle" src="assets/plus-circle.svg" />Add entry
       </button>
     </main>
+    <script src="view-travel-destinations.js"></script>
   </body>
 </html>
