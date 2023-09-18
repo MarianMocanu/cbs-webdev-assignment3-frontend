@@ -1,5 +1,5 @@
-import { createTravelDestination } from "./travel-destinations-api";
-import { imageToBase64 } from "./util";
+import { createTravelDestination } from "./travel-destinations-api.js";
+import { imageToBase64 } from "./util.js";
 
 const form = document.getElementById("travel-destination-form");
 
