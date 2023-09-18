@@ -57,3 +57,6 @@ departureDate.addEventListener("input", () => {
 const closeFormPage = () => {
   window.location.href = "view-travel-destinations.html";
 };
+
+const cancelBtn = document.getElementsByClassName('btn-secondary');
+cancelBtn.addEventListener('click', closeFormPage)
