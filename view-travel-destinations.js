@@ -5,6 +5,7 @@ const openFormPage = () => {
   window.location.href = "create-travel-destination.html";
 };
 
+
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await fetchTravelDestinations();
   let travelDestinations;
@@ -79,3 +80,6 @@ const convertToHTML = (destinations) => {
   });
   return htmlDestinations;
 };
+
+document.querySelector('.btn-shadow').addEventListener('click', openFormPage)
+
