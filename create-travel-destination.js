@@ -1,3 +1,6 @@
+import { createTravelDestination } from "./travel-destinations-api";
+import { imageToBase64 } from "./util";
+
 const form = document.getElementById("travel-destination-form");
 
 const title = document.getElementById("title");
@@ -7,15 +10,6 @@ const departureDate = document.getElementById("departure-date");
 const image = document.getElementById("image");
 const description = document.getElementById("description");
 const country = document.getElementById("country");
-
-const imageToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-};
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -48,16 +42,17 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-const createTravelDestination = async (travelDestination) => {
-  const response = await fetch("http://localhost:3000/travel-destination", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(travelDestination),
-  });
-  return response;
-};
+arrivalDate.addEventListener("input", () => {
+  departureDate.min = arrivalDate.value;
+});
+
+departureDate.addEventListener("input", () => {
+  console.log(arrivalDate.value);
+  if (!arrivalDate.value) {
+    arrivalDate.value = departureDate.value;
+    departureDate.value = "";
+  }
+});
 
 const closeFormPage = () => {
   window.location.href = "view-travel-destinations.html";

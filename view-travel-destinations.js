@@ -1,3 +1,6 @@
+import { fetchTravelDestinations } from "./travel-destinations-api.js";
+import { formatDate } from "./util.js";
+
 const openFormPage = () => {
   window.location.href = "create-travel-destination.html";
 };
@@ -10,11 +13,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateUI(travelDestinations);
   }
 });
-
-const fetchTravelDestinations = async () => {
-  const response = await fetch("http://localhost:3000/travel-destinations");
-  return response;
-};
 
 const updateUI = (destinations) => {
   const destinationsContainer = document.getElementById("destinations-container");
@@ -80,10 +78,4 @@ const convertToHTML = (destinations) => {
     return destinationContainer;
   });
   return htmlDestinations;
-};
-
-const formatDate = (isoString) => {
-  const date = new Date(isoString);
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${date.getDate()} ${months[date.getMonth()]}, ${date.getFullYear()}`;
 };
