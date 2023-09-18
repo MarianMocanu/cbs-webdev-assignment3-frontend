@@ -5,7 +5,6 @@ const openFormPage = () => {
   window.location.href = "create-travel-destination.html";
 };
 
-
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await fetchTravelDestinations();
   let travelDestinations;
@@ -16,70 +15,42 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const updateUI = (destinations) => {
-  const destinationsContainer = document.getElementById("destinations-container");
+  const destinationsContainer = document.getElementById(
+    "destinations-container"
+  );
   const htmlDestinations = convertToHTML(destinations);
   destinationsContainer.append(...htmlDestinations);
 };
 
 const convertToHTML = (destinations) => {
   const htmlDestinations = destinations.map((destination) => {
-    const destinationContainer = document.createElement("div");
-    destinationContainer.classList.add("destination-container");
-
-    const image = document.createElement("img");
-    image.classList.add("td-image");
-    if (destination.image) {
-      image.src = destination.image;
-    } else {
-      image.src = "assets/no-image-available.png";
-    }
-
-    const detailsContainer = document.createElement("div");
-    detailsContainer.classList.add("details-container");
-
-    const header = document.createElement("div");
-    header.classList.add("td-header");
-
-    const path = document.createElement("img");
-    path.classList.add("path");
-    path.src = "assets/path.svg";
-
-    const country = document.createElement("span");
-    country.classList.add("country");
-    country.textContent = destination.country;
-
-    const link = document.createElement("a");
-    link.classList.add("td-link");
-    if (destination.link) {
-      link.href = destination.link;
-      link.target = "_blank";
-      link.textContent = "View on Google Maps";
-    }
-
-    header.append(path, country, link);
-
-    const title = document.createElement("div");
-    title.classList.add("td-title");
-    title.textContent = destination.title;
-
-    const date = document.createElement("div");
-    date.classList.add("td-date");
-    if (destination.arrivalDate && destination.departureDate) {
-      date.textContent = `${formatDate(destination.arrivalDate)} - ${formatDate(destination.departureDate)}`;
-    }
-
-    const description = document.createElement("div");
-    description.classList.add("td-description");
-    description.textContent = destination.description;
-
-    detailsContainer.append(header, title, date, description);
-
-    destinationContainer.append(image, detailsContainer);
-
-    return destinationContainer;
+    const clone = cloneTemplate();
+    clone.getElementById("td-country").textContent = destination.country;
+    clone.getElementById("td-title").textContent = destination.title;
+    destination.description
+      ? (clone.getElementById("td-description").textContent =
+          destination.description)
+      : undefined;
+    destination.image
+      ? (clone.getElementById("td-image").src = destination.image)
+      : undefined;
+    destination.link
+      ? (clone.getElementById("td-link").href = destination.link)
+      : clone.getElementById("td-link").classList.add('hidden');
+    destination.arrivalDate && destination.departureDate
+      ? (clone.getElementById("td-date").textContent = `${formatDate(
+          destination.arrivalDate
+        )} - ${formatDate(destination.departureDate)}`)
+      : undefined;
+    return clone;
   });
   return htmlDestinations;
 };
 
-document.querySelector('.btn-shadow').addEventListener('click', openFormPage)
+function cloneTemplate() {
+  const template = document.getElementById("destination-template");
+  const clone = document.importNode(template.content, true);
+  return clone;
+}
 
+document.querySelector(".btn-shadow").addEventListener("click", openFormPage);
