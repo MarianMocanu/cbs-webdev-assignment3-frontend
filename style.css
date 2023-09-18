@@ -51,6 +51,15 @@ form {
   display: flex;
 }
 
+error-message {
+  visibility: hidden;
+}
+
+input.error + error-message {
+  visibility: visible;
+}
+
+
 label {
   font-size: 12px;
   line-height: 16px;

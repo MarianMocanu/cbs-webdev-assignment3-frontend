@@ -1,3 +1,4 @@
+import validatedForm from "./form-validation.js";
 import { createTravelDestination } from "./travel-destinations-api.js";
 import { imageToBase64 } from "./util.js";
 
@@ -13,16 +14,13 @@ const country = document.getElementById("country");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (!country.value) {
-    // TODO Feedback for user
-    console.log("Country is required");
-    return;
+  const data = new FormData(form);
+  console.log(data.get('country'));
+  if(!validatedForm(data)) {
+    return
   }
-  if (!title.value) {
-    // TODO Feedback for user
-    console.log("Title is required");
-    return;
-  }
+
+
   // TODO handling of empty dates and image
 
   const response = await createTravelDestination({
