@@ -1,8 +1,8 @@
-import { fetchTravelDestinations } from "./travel-destinations-api.js";
-import { formatDate } from "./util.js";
+import { fetchTravelDestinations } from "../../../api/travel-destinations-api.js";
+import { formatDate } from "../../../app/util.js";
 
 const openFormPage = () => {
-  window.location.href = "create-travel-destination.html";
+  window.location.href = "../create/create-travel-destination.html";
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const updateUI = (destinations) => {
-  const destinationsContainer = document.getElementById(
-    "destinations-container"
-  );
+  const destinationsContainer = document.getElementById("destinations-container");
   const htmlDestinations = convertToHTML(destinations);
   destinationsContainer.append(...htmlDestinations);
 };
@@ -28,19 +26,16 @@ const convertToHTML = (destinations) => {
     clone.getElementById("td-country").textContent = destination.country;
     clone.getElementById("td-title").textContent = destination.title;
     destination.description
-      ? (clone.getElementById("td-description").textContent =
-          destination.description)
+      ? (clone.getElementById("td-description").textContent = destination.description)
       : undefined;
-    destination.image
-      ? (clone.getElementById("td-image").src = destination.image)
-      : undefined;
+    destination.image ? (clone.getElementById("td-image").src = destination.image) : undefined;
     destination.link
       ? (clone.getElementById("td-link").href = destination.link)
-      : clone.getElementById("td-link").classList.add('hidden');
+      : clone.getElementById("td-link").classList.add("hidden");
     destination.arrivalDate && destination.departureDate
-      ? (clone.getElementById("td-date").textContent = `${formatDate(
-          destination.arrivalDate
-        )} - ${formatDate(destination.departureDate)}`)
+      ? (clone.getElementById("td-date").textContent = `${formatDate(destination.arrivalDate)} - ${formatDate(
+          destination.departureDate
+        )}`)
       : undefined;
     return clone;
   });

@@ -1,6 +1,6 @@
 import validatedForm from "./form-validation.js";
-import { createTravelDestination } from "./travel-destinations-api.js";
-import { imageToBase64 } from "./util.js";
+import { createTravelDestination } from "../../../api/travel-destinations-api.js";
+import { imageToBase64 } from "../../../app/util.js";
 
 const form = document.getElementById("travel-destination-form");
 
@@ -15,11 +15,10 @@ const country = document.getElementById("country");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(form);
-  console.log(data.get('country'));
-  if(!validatedForm(data)) {
-    return
+  console.log(data.get("country"));
+  if (!validatedForm(data)) {
+    return;
   }
-
 
   // TODO handling of empty dates and image
 
@@ -53,7 +52,7 @@ departureDate.addEventListener("input", () => {
 });
 
 const closeFormPage = () => {
-  window.location.href = "view-travel-destinations.html";
+  window.location.href = "../view/view-travel-destinations.html";
 };
 
 const cancelBtn = document.getElementById("cancel-btn");

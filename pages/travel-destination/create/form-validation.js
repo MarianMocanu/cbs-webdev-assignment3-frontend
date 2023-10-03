@@ -14,7 +14,7 @@ export default function validatedForm(data) {
 }
 
 function isFieldValidated(field) {
-console.log(field);
+  console.log(field);
   if (field.length < 3) {
     return false;
   }

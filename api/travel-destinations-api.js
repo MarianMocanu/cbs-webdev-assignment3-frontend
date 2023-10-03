@@ -4,7 +4,7 @@ export const fetchTravelDestinations = async () => {
 };
 
 export const createTravelDestination = async (travelDestination) => {
-  const response = await fetch("http://localhost:3000/travel-destination", {
+  const response = await fetch("http://localhost:3000/travel-destinations", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
