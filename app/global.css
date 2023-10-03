@@ -26,6 +26,12 @@ error-message {
   padding-left: 8px;
 }
 
+.header-svg {
+  height: 32px;
+  width: 32px;
+  padding: 0px 16px;
+}
+
 .header-text {
   font-size: 20px;
   color: #f5f5f5;
