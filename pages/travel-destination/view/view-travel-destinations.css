@@ -1,0 +1,105 @@
+.destinations-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.destination-container {
+  width: 600px;
+  height: 180px;
+  display: flex;
+  padding: 30px 0;
+  border-bottom: 1px solid #ff8a50;
+  align-items: center;
+}
+.td-image {
+  width: 140px;
+  height: 180px;
+  border-radius: 5px;
+}
+.details-container {
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+.td-header {
+  font-size: 12px;
+  line-height: 14px;
+  color: #333333;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+.path {
+  padding-right: 6px;
+}
+.country {
+  letter-spacing: 1px;
+  padding-right: 6px;
+}
+.td-link {
+  font-size: 12px;
+  line-height: 14px;
+  color: #918e9b;
+  font-weight: 400;
+}
+.td-title {
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 700;
+  color: #333333;
+  padding: 6px 0;
+}
+.td-date {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  color: #333333;
+  padding: 6px 0;
+}
+.td-description {
+  font-size: 12px;
+  line-height: 14px;
+  color: #333333;
+  font-weight: 400;
+}
+
+.plus-circle {
+  padding-right: 10px;
+}
+
+.btn-shadow {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  height: 48px;
+  font-size: 20px;
+  line-height: 24px;
+  background-color: #03a0f4;
+  border-radius: 5px;
+  color: #fff;
+  border: 2px solid #03a9f4;
+  align-items: center;
+  display: flex;
+  padding: 0 10px;
+  margin: 40px 0 20px 0;
+}
+
+.btns-container {
+  margin-top: 10px;
+  align-self: flex-end;
+  display: flex;
+}
+
+.icon {
+  width: 18px;
+}
+
+.icon-btn {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+}
+
+.text {
+  padding: 0 4px;
+}
