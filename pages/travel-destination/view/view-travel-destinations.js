@@ -1,9 +1,16 @@
 import { fetchTravelDestinations } from "../../../api/travel-destinations-api.js";
 import { formatDate } from "../../../app/util.js";
+import { logout } from '../../../api/auth.js';
+
+
+
+
+const logoutBtn = document.getElementById('logout-btn');
 
 const openFormPage = () => {
   window.location.href = "../create/create-travel-destination.html";
 };
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await fetchTravelDestinations();
@@ -12,6 +19,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     travelDestinations = await response.json();
     updateUI(travelDestinations);
   }
+
+
 });
 
 const updateUI = (destinations) => {
@@ -49,3 +58,4 @@ function cloneTemplate() {
 }
 
 document.querySelector(".btn-shadow").addEventListener("click", openFormPage);
+logoutBtn.addEventListener('click', logout())

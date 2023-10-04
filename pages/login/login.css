@@ -1,0 +1,50 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+form div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.link-button {
+    align-self: center;
+    margin-top:1.5rem;
+    padding: 0.5rem 3rem;
+    width:fit-content;
+    background-color: #fc5424;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    background-color: #ff3700;
+
+}
+
+.text-btn {
+    font-style: italic;
+    text-align: center;
+}
+.text-btn span {
+    color:  #fc5424;
+    cursor: pointer;
+    font-style: normal;
+}
+
+.text-btn span:hover {
+    text-decoration: underline;
+}
+
+.red {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
