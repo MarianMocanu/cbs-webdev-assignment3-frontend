@@ -1,5 +1,3 @@
-
-
 .destinations-container {
   display: flex;
   align-items: center;
@@ -95,6 +93,14 @@
   width: 18px;
 }
 
+.header-btn {
+  color: #fff;
+  border: none;
+  background-color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .icon-btn-primary {
   height: 30px;
   display: flex;
@@ -107,7 +113,8 @@
 }
 
 .icon-btn-primary:hover {
-  background-color: #333333;
+  background-color: #0282c8;
+  border: 2px solid #0282c8;
 }
 
 .icon-btn-secondary {
@@ -115,6 +122,16 @@
   display: flex;
   align-items: center;
   margin: 0 4px;
+  border: 2px solid #ff8a50;
+  background-color: #ff8a50;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.icon-btn-secondary:hover {
+  background-color: #ff6e21;
+  border: 2px solid #ff6e21;
+  color: #fff;
 }
 
 .text {

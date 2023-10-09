@@ -1,6 +1,10 @@
 import validatedForm from "./form-validation.js";
-import { createTravelDestination } from "../../../api/travel-destinations-api.js";
-import { imageToBase64 } from "../../../app/util.js";
+import {
+  createTravelDestination,
+  fetchTravelDestination,
+  updateTravelDestination,
+} from "../../../api/travel-destinations-api.js";
+import { base64toFile, imageToBase64 } from "../../../app/util.js";
 
 const form = document.getElementById("travel-destination-form");
 
@@ -12,20 +16,55 @@ const image = document.getElementById("image");
 const description = document.getElementById("description");
 const country = document.getElementById("country");
 
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+
+document.addEventListener("DOMContentLoaded", async () => {
+  if (id) {
+    document.querySelector(".title").textContent = "Update destination";
+    document.getElementById("submit-btn").textContent = "Update";
+    // fetch the destination
+    const destinationResponse = await fetchTravelDestination(id);
+    if (destinationResponse.ok) {
+      const destination = await destinationResponse.json();
+      console.log(destination);
+      fillForm(destination);
+    }
+
+    // pre fill form
+  }
+});
+
+const fillForm = (destination) => {
+  title.value = destination.title;
+  country.value = destination.country;
+  link.value = destination.link ? destination.link : "";
+  arrivalDate.value = destination.arrivalDate ? destination.arrivalDate.split("T")[0] : "";
+  departureDate.value = destination.departureDate ? destination.departureDate.split("T")[0] : "";
+  // TODO: find a way to handle the abse 64 image
+  // image.files = [base64toFile(destination.image)];
+  description.value = destination.description ? destination.description : "";
+};
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(form);
-  console.log(data.get("country"));
   if (!validatedForm(data)) {
     return;
   }
+  // TODO: handling of empty dates and image
+  if (id) {
+    update(id);
+  } else {
+    create();
+  }
+});
 
-  // TODO handling of empty dates and image
-
+const create = async () => {
   const response = await createTravelDestination({
     country: country.value,
     title: title.value,
-    link: link.value ? link.value : undefined,
+    link: link.value,
     arrivalDate: arrivalDate.value ? new Date(arrivalDate.value).toISOString() : undefined,
     departureDate: departureDate.value ? new Date(departureDate.value).toISOString() : undefined,
     image: image.files[0] ? await imageToBase64(image.files[0]) : undefined,
@@ -37,7 +76,29 @@ form.addEventListener("submit", async (event) => {
     console.log(body);
     closeFormPage();
   }
-});
+};
+
+const update = async (travelDestinationId) => {
+  const updatedTD = {
+    country: country.value,
+    title: title.value,
+    link: link.value,
+    arrivalDate: arrivalDate.value ? new Date(arrivalDate.value).toISOString() : null,
+    departureDate: departureDate.value ? new Date(departureDate.value).toISOString() : null,
+    image: image.files[0] ? await imageToBase64(image.files[0]) : null,
+    description: description.value,
+  };
+
+  console.log("updatedTD", updatedTD);
+
+  const response = await updateTravelDestination(travelDestinationId, updatedTD);
+  if (response.ok) {
+    const body = await response.json();
+    // TODO update UI / give feedback
+    console.log(body);
+    closeFormPage();
+  }
+};
 
 arrivalDate.addEventListener("input", () => {
   departureDate.min = arrivalDate.value;

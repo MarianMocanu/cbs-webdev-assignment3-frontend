@@ -12,3 +12,21 @@ export const imageToBase64 = (file) => {
     reader.onerror = (error) => reject(error);
   });
 };
+
+export const base64toFile = (base64) => {
+  // Convert the base64 data to a Blob
+  const byteCharacters = atob(base64.split(",")[1]);
+  const byteNumbers = new Array(byteCharacters.length);
+
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+
+  const byteArray = new Uint8Array(byteNumbers);
+  const blob = new Blob([byteArray], { type: "image/png" }); // Specify the appropriate image type
+
+  // Create a File object from the Blob
+  const file = new File([blob], "image.png", { type: "image/png" }); // Specify the filename and type
+
+  return file;
+};

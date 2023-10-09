@@ -1,4 +1,4 @@
-import { login, logout, signup } from "../../api/auth.js";
+import { login, signup } from "../../api/auth.js";
 import validatedForm from "./form-validation.js";
 
 const loginSection = document.querySelector(".login-section");
@@ -22,16 +22,18 @@ function showLoginSection() {
   signupSection.classList.add("hidden");
 }
 
-function validateSignup(ev) {
-  ev.preventDefault();
+async function validateSignup(event) {
+  event.preventDefault();
   document.querySelector(".unvalid-pass2").classList.add("hidden");
-  const data = new FormData(signupForm);
-  const dataObject = formDataToObject(data);
-  console.log("validate signup", dataObject);
-  const cleanedObject = (({ passwordRepeated, ...rest }) => rest)(dataObject);
+  const signupData = new FormData(signupForm);
+  const signupObject = formDataToObject(signupData);
+  const cleanedObject = (({ passwordRepeated, ...rest }) => rest)(signupObject);
   if (validatedForm(cleanedObject)) {
-    if (dataObject.password === dataObject.passwordRepeated) {
-      signup(cleanedObject);
+    if (signupObject.password === signupObject.passwordRepeated) {
+      const signupResponse = await signup(cleanedObject);
+      if (signupResponse.ok) {
+        showLoginSection();
+      }
     } else {
       //password not match
       document.querySelector(".unvalid-pass2").classList.remove("hidden");
@@ -45,21 +47,18 @@ async function validateLogin(ev) {
   const dataObject = formDataToObject(data);
   console.log("validate login", dataObject);
   const loginResponse = await login(dataObject);
-  console.log(loginResponse);
-  if(loginResponse.ok) {
+  if (loginResponse.ok) {
     console.log("inside token");
-        const token = (await loginResponse.json()).token;
-        localStorage.setItem('userToken',token);
-        window.location.href = '../travel-destination/view/view-travel-destinations.html'
+    const token = (await loginResponse.json()).token;
+    localStorage.setItem("userToken", token);
+    window.location.href = "../travel-destination/view/view-travel-destinations.html";
   }
-
- }
+}
 
 function formDataToObject(formData) {
-  const toReturn = {};
-
+  const result = {};
   for (const [key, value] of formData.entries()) {
-    toReturn[key] = value;
+    result[key] = value;
   }
-  return toReturn;
+  return result;
 }
