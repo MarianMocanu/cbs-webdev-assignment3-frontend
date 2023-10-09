@@ -1,6 +1,11 @@
 export async function logout(userId) {
     console.log("log out", userId);
     localStorage.removeItem('userToken')
+    const userTag = document.querySelector("#user-tag");
+    document.querySelector("#logout-btn").classList.add("hidden")
+    document.querySelector("#login-btn").classList.remove("hidden")
+    document.querySelector("#welcome-txt").classList.add("hidden")
+    userTag.textContent = '';
   }
 
   export async function login(userObject) {
@@ -15,9 +20,6 @@ export async function logout(userId) {
             returnSecureToken: true
           }),
       });
-      const token = (await response.json()).token;
-      console.log(token);
-      localStorage.setItem('userToken',token)
       return response;
     }
     catch(error) {
@@ -27,6 +29,7 @@ export async function logout(userId) {
 }
 
   export async function signup(userObject) {
+    console.log("signup");
     try {
       const response = await fetch("http://localhost:3000/auth/signup", {
            method: 'POST',

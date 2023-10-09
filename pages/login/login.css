@@ -5,9 +5,13 @@ form {
 }
 
 form div {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-gap: 10px;
     justify-content: space-between;
-    gap: 1rem;
+}
+
+.unvalid-pass2 {
 }
 
 .link-button {
@@ -42,6 +46,10 @@ form div {
 
 .red {
     color: red;
+    grid-column: span 2; 
+    margin:0;
+    font-style: italic;
+    font-size: 0.8rem;
 }
 
 .hidden {
