@@ -93,7 +93,22 @@
   width: 18px;
 }
 
-.icon-btn {
+.icon-btn-primary {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+  border: 2px solid #03a9f4;
+  background-color: #03a0f4;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.icon-btn-primary:hover {
+  background-color: #333333;
+}
+
+.icon-btn-secondary {
   height: 30px;
   display: flex;
   align-items: center;
