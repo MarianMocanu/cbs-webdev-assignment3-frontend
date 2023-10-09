@@ -1,3 +1,5 @@
+
+
 .destinations-container {
   display: flex;
   align-items: center;
@@ -117,4 +119,8 @@
 
 .text {
   padding: 0 4px;
+}
+
+.hidden {
+  display: none;
 }

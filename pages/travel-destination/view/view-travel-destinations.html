@@ -11,8 +11,16 @@
   </head>
   <body>
     <header>
-      <img class="header-svg" src="../../../assets/globe.svg" alt="World Globe" />
-      <span class="header-text">My travel journal.</span>
+      <div>
+        <img class="header-svg" src="../../../assets/globe.svg" alt="World Globe" />
+        <span class="header-text">My travel journal.</span>
+      </div>
+      <button id="login-btn" class="icon-btn">
+        <a href="../../login/login.html">Login</a></button>
+      <div id="welcome-txt" class="hidden" >
+        <p>Hi <span id="user-tag"></span>!</p>
+        <button id="logout-btn" class="icon-btn">Logout</button>
+      </div>
     </header>
     <main>
       <div class="title">Destinations</div>

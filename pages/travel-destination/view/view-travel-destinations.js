@@ -1,27 +1,47 @@
 import { deleteTravelDestination, fetchTravelDestinations } from "../../../api/travel-destinations-api.js";
 import { fetchCurrentUser } from "../../../api/user-api.js";
 import { formatDate } from "../../../app/util.js";
+import { logout } from '../../../api/auth.js';
 
-let token = localStorage.getItem("token");
+
+
+const logoutBtn = document.getElementById('logout-btn');
+const welcomeSign = document.querySelector("#welcome-txt");
+const userTag = document.querySelector("#user-tag");
+const loginBtn = document.querySelector("#login-btn");
+
+
+
+
+let token = localStorage.getItem("userToken");
 let user = undefined;
 
 document.querySelector(".btn-shadow").addEventListener("click", () => {
   window.location.href = "../create/create-travel-destination.html";
 });
 
+
 document.addEventListener("DOMContentLoaded", async () => {
-  if (token) {
+
+  if (token) 
     const userResponse = await fetchCurrentUser(token);
     if (userResponse.ok) {
-      user = await userResponse.json();
+      user = await userResponse.json();  
+    loginBtn.classList.add("hidden")
+    logoutBtn.classList.remove("hidden")
+    welcomeSign.classList.remove("hidden")
+    userTag.textContent = user.name;
     }
   }
 
   const travelDestinationsResponse = await fetchTravelDestinations();
   if (travelDestinationsResponse.ok) {
     const travelDestinations = await travelDestinationsResponse.json();
+
     updateUI(travelDestinations);
   }
+
+
 });
 
 const updateUI = (destinations) => {
@@ -82,4 +102,9 @@ const cloneTemplate = () => {
   const template = document.getElementById("destination-template");
   const clone = document.importNode(template.content, true);
   return clone;
-};
+
+}
+
+document.querySelector(".btn-shadow").addEventListener("click", openFormPage);
+logoutBtn.addEventListener('click', logout())
+

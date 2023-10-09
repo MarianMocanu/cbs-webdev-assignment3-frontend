@@ -9,6 +9,13 @@ header {
   height: 64px;
   background-color: #fc5424;
   align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
+
+header div {
+  display: flex;
+  align-items: center;
 }
 
 main {
