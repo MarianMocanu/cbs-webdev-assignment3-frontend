@@ -4,13 +4,23 @@ import { logout } from '../../../api/auth.js';
 
 
 
-
 const logoutBtn = document.getElementById('logout-btn');
+const welcomeSign = document.querySelector("#welcome-txt");
+const userTag = document.querySelector("#user-tag");
+const loginBtn = document.querySelector("#login-btn");
 
 const openFormPage = () => {
   window.location.href = "../create/create-travel-destination.html";
 };
 
+const isToken = localStorage.getItem('userToken');
+if(isToken) {
+  // get user data with the token from db
+  loginBtn.classList.add("hidden")
+  welcomeSign.classList.remove("hidden")
+  userTag.textContent = 'User';
+
+} 
 
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await fetchTravelDestinations();

@@ -1,3 +1,5 @@
+import { login, logout, signup } from '../../api/auth.js'
+
 const loginSection = document.querySelector(".login-section");
 const signupSection = document.querySelector(".signup-section");
 const notMemberBtn = document.getElementById('show-signup-btn');
@@ -24,7 +26,11 @@ function validateSignup(ev) {
     ev.preventDefault();
     const data = new FormData(signupForm);
     const dataObject = formDataToObject(data);
-    console.log("validate signup", dataObject);
+    console.log("validate signup", dataObject.passwordRepeated,  dataObject.password);
+    if(dataObject.password === dataObject.passwordRepeated) {
+        const cleanedObject = (({ passwordRepeated, ...rest }) => rest)(dataObject);
+        signup(cleanedObject)
+    }
 }
 
 function validateLogin(ev) {
@@ -32,6 +38,7 @@ function validateLogin(ev) {
     const data = new FormData(loginForm);
     const dataObject = formDataToObject(data);
     console.log("validate login", dataObject);
+    login(dataObject);
 }
 
 function formDataToObject(formData) {
