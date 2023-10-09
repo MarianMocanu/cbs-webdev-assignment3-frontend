@@ -1,17 +1,43 @@
 import { fetchTravelDestinations } from "../../../api/travel-destinations-api.js";
 import { formatDate } from "../../../app/util.js";
+import { logout } from '../../../api/auth.js';
+
+
+
+const logoutBtn = document.getElementById('logout-btn');
+const welcomeSign = document.querySelector("#welcome-txt");
+const userTag = document.querySelector("#user-tag");
+const loginBtn = document.querySelector("#login-btn");
+
+
+
 
 const openFormPage = () => {
   window.location.href = "../create/create-travel-destination.html";
 };
 
+
+const isToken = localStorage.getItem('userToken');
+
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log("token", isToken);
+  if(isToken) {
+    // get user data with the token from db
+    console.log("inside token");
+    loginBtn.classList.add("hidden")
+    logoutBtn.classList.remove("hidden")
+    welcomeSign.classList.remove("hidden")
+    userTag.textContent = 'User';
+  
+  } 
   const response = await fetchTravelDestinations();
   let travelDestinations;
   if (response.ok) {
     travelDestinations = await response.json();
     updateUI(travelDestinations);
   }
+
+
 });
 
 const updateUI = (destinations) => {
@@ -49,3 +75,4 @@ function cloneTemplate() {
 }
 
 document.querySelector(".btn-shadow").addEventListener("click", openFormPage);
+logoutBtn.addEventListener('click', logout())
