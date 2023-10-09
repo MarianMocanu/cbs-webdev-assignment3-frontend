@@ -32,3 +32,23 @@ export const deleteTravelDestination = async (travelDestinationId, token) => {
     console.error(error);
   }
 };
+
+export const fetchTravelDestination = async (travelDestinationId) => {
+  try {
+    return await fetch(`${url}/${travelDestinationId}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updateTravelDestination = async (travelDestinationId, update) => {
+  try {
+    return await fetch(`${url}/${travelDestinationId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(update),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};

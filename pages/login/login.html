@@ -6,19 +6,15 @@
     <title>Travel destinations - Login</title>
     <link rel="stylesheet" href="login.css" />
     <link rel="stylesheet" href="../../app/global.css" />
-    <link rel="icon" href="/assets/globe.svg" type="image/x-icon" />
+    <link rel="icon" href="../../assets/globe.svg" type="image/x-icon" />
     <script src="login.js" defer type="module"></script>
   </head>
   <body>
     <header>
-        <div>
-            <img
-              class="header-svg"
-              src="../../../assets/globe.svg"
-              alt="World Globe"
-            />
-            <span class="header-text">My travel journal.</span>
-        </div>
+      <div>
+        <img class="header-svg" src="../../assets/globe.svg" alt="World Globe" />
+        <span class="header-text">My travel journal.</span>
+      </div>
     </header>
     <main id="main">
       <section class="login-section">
@@ -36,8 +32,7 @@
 
           <input type="submit" class="link-button" value="Log In" />
         </form>
-        <p class="text-btn">Not a member? <span id="show-signup-btn" >Sign Up</span> </p>
-
+        <p class="text-btn">Not a member? <span id="show-signup-btn">Sign Up</span></p>
       </section>
 
       <section class="signup-section hidden">
@@ -59,9 +54,7 @@
             <p class="unvalid-pass1 red hidden">Password unvalid.</p>
           </div>
           <div>
-            <label for="passwordRepeated"
-              >Repeat Password: <span class="red"> *</span></label
-            >
+            <label for="passwordRepeated">Repeat Password: <span class="red"> *</span></label>
             <input type="password" name="passwordRepeated" id="signup-confirm" />
             <p class="unvalid-pass2 red hidden">❗ Passwords don't match.</p>
           </div>
@@ -71,7 +64,7 @@
           <input type="submit" class="link-button" value="Sign Up" />
         </form>
 
-        <p class="text-btn">Already a member? <span id="show-login-btn">Log In</span> </p>
+        <p class="text-btn">Already a member? <span id="show-login-btn">Log In</span></p>
       </section>
     </main>
   </body>
